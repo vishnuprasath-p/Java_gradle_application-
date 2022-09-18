@@ -21,6 +21,23 @@ pipeline{
                 }
             }
         }
+        stage("docker build & docker push"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_password')]) {
+                        sh '''
+                            docker build -t 35.223.70.67:8083/sprinapp:${version} .
+                            docker login -u admin -p $docker_password 35.223.70.67:8083
+                            docker push 35.223.70.67:8083/sprinapp:${version} 
+                            docker rmi 35.223.70.67:8083/sprinapp:${version} 
+
+                            '''
+
+                    }
+                    
+                }
+            }
+        }
     }
 }
 
