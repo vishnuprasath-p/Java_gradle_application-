@@ -30,8 +30,8 @@ pipeline{
                             docker login -u admin -p $docker_password 35.223.70.67:8083
                             docker push 35.223.70.67:8083/springapp:${version} 
                             docker rmi 35.223.70.67:8083/springapp:${version} 
-
-                            '''
+                            
+                        '''
 
                     }
                     
