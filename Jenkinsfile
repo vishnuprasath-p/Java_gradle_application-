@@ -43,7 +43,7 @@ pipeline{
 
                     dir('kubernetes/') {
                         withEnv(['DATREE_TOKEN=GJdx2cP2TCDyUY3EhQKgTc']) {
-                              sh 'datree test templates/'
+                              sh 'datree test kubernetes/'
                         }
                     }
                 }
